@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+
+  nav {
+    min-height: 100vh;
+    height: 100%;
+    background: #f4f5f7;
+
+    ul {
+      max-width: 240px;
+    }
+
+    li {
+      width: 100%;
+    }
+
+    a {
+      font-size: 13px;
+      color: #777c85;
+
+      &:hover,
+      &.active {
+        background: hsla(0, 0%, 100%, .75);
+      }
+    }
+  }
+
+  grid-area: main;
+}

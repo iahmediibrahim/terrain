@@ -1,0 +1,27 @@
+main {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  grid-template-areas: "primary-nav main";
+
+  nav {
+    min-height: 100vh;
+    grid-area: primary-nav;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0;
+    background: #262a59;
+    text-align: center;
+
+    .fa {
+      font-size: 28px;
+      color: #fff;
+    }
+  }
+}

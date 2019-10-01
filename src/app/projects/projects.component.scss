@@ -1,0 +1,22 @@
+:host {
+  grid-area: main;
+
+  span {
+    font-size: 13px;
+  }
+
+
+  .card {
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(18, 19, 21, .16);
+    border-radius: 6px;
+
+    &:hover {
+      cursor: pointer;
+      border-radius: 6px;
+      border: 2px solid #20b0c7;
+    }
+
+  }
+
+}
