@@ -11,7 +11,7 @@ const BASE_URL = 'http://localhost:3000/';
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectsService {
+export class TerrainsService {
   model = 'projects';
   constructor(private httpClient: HttpClient) {}
   public upload(

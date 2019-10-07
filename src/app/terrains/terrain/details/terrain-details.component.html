@@ -1,0 +1,70 @@
+ <div class="container-fluid">
+   <div class="row">
+
+     <div class="col-md-6" *ngIf="project$">
+       <div class="border rounded p-3 my-3">
+         <form #f='ngForm' (ngSubmit)="onSubmit(f)">
+           <div class="form-group">
+             <label for="name" class="font-weight-bold">Name:</label>
+             <input #name="ngModel" required minlength="3" type="text" class="form-control" name="name" id="name"
+               [(ngModel)]="project$.name" placeholder="Name" [class.field-error]="f.submitted && name.invalid">
+             <div [hidden]="name.valid || !f.submitted" class="alert alert-danger py-1 mt-2">
+               Name is required!
+             </div>
+           </div>
+           <div class="form-group">
+             <label for="name" class="font-weight-bold">Description: <span
+                 class="text-muted font-weight-lighter">(optional)</span></label>
+             <textarea name="description" placeholder="(optional)" class="form-control" id="description"
+               [(ngModel)]="project$.description"></textarea>
+           </div>
+           <!-- <div class="form-group">
+             <label for="type">Workflow Types</label>
+             <select class="form-control" [(ngModel)]="project$.type" name="type" id="type">
+               <option *ngFor="let type of workflowTypes | async">{{ type }}</option>
+
+               <option value="monthly">Monthly</option>
+               <option value="annual">Annual</option>
+               <option value="lifetime">Lifetime</option>
+             </select>
+           </div> -->
+           <div class="modal-footer px-0">
+             <button type="button" class="btn btn-light" (click)="modal.dismiss('cancel click')">Cancel</button>
+             <button type="submit" class="btn btn-danger">Save</button>
+           </div>
+         </form>
+       </div>
+       <input type="file" #file style="display: none" (change)="onFilesAdded()" />
+       <div class="container border rounded p-3">
+         <span class="pr-3 font-weight-bold text-muted">Upload File: </span>
+         <button [disabled]="uploading || uploadSuccessful" class="btn btn-light btn-sm" (click)="addFiles()">
+           Add Files
+         </button>
+
+         <!-- This is the content of the dialog, containing a list of the files to upload -->
+         <div class="mb-3" *ngIf="fileUpload">
+           <p class="pt-3"> <span class="pr-3 font-weight-bold text-muted">Selected File: </span>
+             <span>{{fileUpload.name}}</span></p>
+
+           <ngb-progressbar [showValue]="true" type="info" *ngIf="progress"
+             [value]="progress[fileUpload.name].progress | async">
+           </ngb-progressbar>
+         </div>
+
+         <!-- This are the actions of the dialog, containing the primary and the cancel button-->
+         <div class="actions" *ngIf="fileUpload">
+           <button class="btn btn-info" [disabled]="!canBeClosed" (click)="upload()">
+             {{primaryButtonText}}
+           </button>
+         </div>
+       </div>
+       <div class="done mt-5">
+         <textarea name="" class="form-control" id="" rows="2"
+           placeholder="data from file should be displayed here!"></textarea>
+       </div>
+     </div>
+     <div class="col-md-6 vh-100 pr-0">
+       <div id="map" class="h-100"></div>
+     </div>
+   </div>
+ </div>

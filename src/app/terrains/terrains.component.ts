@@ -1,23 +1,23 @@
-import { ProjectsService } from './projects-service/projects.service';
-import { Project } from './projects-service/project';
+import { TerrainsService } from './terrains-service/terrains.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { v4 as uuid } from 'uuid';
 import { NgForm } from '@angular/forms';
+import { Terrain } from './terrains-service/terrain';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss'],
+  selector: 'app-terrains',
+  templateUrl: './terrains.component.html',
+  styleUrls: ['./terrains.component.scss'],
 })
-export class ProjectsComponent implements OnInit {
+export class TerrainsComponent implements OnInit {
   constructor(
-    private projectsService: ProjectsService,
+    private terrainsService: TerrainsService,
     private modalService: NgbModal,
   ) {}
-  projects$;
+  terrains$;
   selectedProject;
-  originalProject: Project = {
+  originalProject: Terrain = {
     name: null,
     description: null,
     date: new Date(),
@@ -46,7 +46,7 @@ export class ProjectsComponent implements OnInit {
   onSubmit(f: NgForm) {
     console.log(f.valid);
     if (f.valid) {
-      this.projectsService.create(this.originalProject).subscribe(
+      this.terrainsService.create(this.originalProject).subscribe(
         result => {
           console.log(result);
           this.modalService.dismissAll();
@@ -68,7 +68,7 @@ export class ProjectsComponent implements OnInit {
     console.log(this.selectedProject);
   }
   getProjects() {
-    this.projects$ = this.projectsService.all();
+    this.terrains$ = this.terrainsService.all();
   }
   saveProject(project) {
     if (!project.id) {
@@ -77,17 +77,17 @@ export class ProjectsComponent implements OnInit {
     this.updateProject(project);
   }
   createProject(project) {
-    this.projectsService.create(project).subscribe(result => {
+    this.terrainsService.create(project).subscribe(result => {
       this.getProjects();
     });
   }
   updateProject(project) {
-    this.projectsService.update(project).subscribe(result => {
+    this.terrainsService.update(project).subscribe(result => {
       this.getProjects();
     });
   }
   deleteProject(project) {
-    this.projectsService
+    this.terrainsService
       .delete(project.id)
       .subscribe(result => this.getProjects());
   }

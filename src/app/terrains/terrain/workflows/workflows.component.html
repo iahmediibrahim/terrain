@@ -1,6 +1,6 @@
 <div class="container">
   <h3 class="my-5">Workflows</h3>
-  <button class="btn btn-outline-info btn-sm mb-5" (click)="open(content)">Create Workflow</button>
+  <button class="btn btn-danger btn-sm mb-5" (click)="open(content)">Create Workflow</button>
 </div>
 
 <div class="container" *ngIf="expression">
@@ -63,8 +63,8 @@
         </select>
       </div>
       <div class="modal-footer px-0">
-        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-        <button type="submit" class="btn btn-info">Save</button>
+        <button type="button" class="btn btn-light" (click)="modal.dismiss('cancel click')">Cancel</button>
+        <button type="submit" class="btn btn-danger">Save</button>
       </div>
     </form>
   </div>

@@ -1,18 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectsService } from '../projects-service/projects.service';
 import { forkJoin } from 'rxjs';
 import OlMap from 'ol/Map';
 import OlXYZ from 'ol/source/XYZ';
 import OlTileLayer from 'ol/layer/Tile';
 import OlView from 'ol/View';
 import { fromLonLat } from 'ol/proj';
+import { TerrainsService } from '../../terrains-service/terrains.service';
 @Component({
-  selector: 'app-project-details',
-  templateUrl: './project-details.component.html',
-  styleUrls: ['./project-details.component.scss'],
+  selector: 'app-terrain-details',
+  templateUrl: './terrain-details.component.html',
+  styleUrls: ['./terrain-details.component.scss'],
 })
-export class ProjectDetailsComponent implements OnInit {
+export class TerrainDetailsComponent implements OnInit {
   map: OlMap;
   source: OlXYZ;
   layer: OlTileLayer;
@@ -20,7 +20,7 @@ export class ProjectDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private projectsService: ProjectsService,
+    private terrainsService: TerrainsService,
   ) {}
   project$;
   id;
@@ -32,6 +32,35 @@ export class ProjectDetailsComponent implements OnInit {
   uploadSuccessful = false;
   @ViewChild('file', { static: false }) file;
   public fileUpload: File;
+
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+      this.terrainsService
+        .getProjectWithId(this.id)
+        .subscribe(project => (this.project$ = project));
+    }
+
+    this.source = new OlXYZ({
+      url: 'http://tile.osm.org/{z}/{x}/{y}.png',
+    });
+
+    this.layer = new OlTileLayer({
+      source: this.source,
+    });
+
+    this.view = new OlView({
+      center: fromLonLat([6.661594, 50.433237]),
+      zoom: 3,
+    });
+
+    this.map = new OlMap({
+      target: 'map',
+      layers: [this.layer],
+      view: this.view,
+    });
+  }
+
   addFiles() {
     this.file.nativeElement.click();
   }
@@ -40,7 +69,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.uploading = true;
 
     // start the upload and save the progress map
-    this.progress = this.projectsService.upload(this.fileUpload);
+    this.progress = this.terrainsService.upload(this.fileUpload);
 
     // convert the progress map into an array
     const allProgressObservables = [];
@@ -73,32 +102,5 @@ export class ProjectDetailsComponent implements OnInit {
   }
   onFilesAdded() {
     this.fileUpload = this.file.nativeElement.files.item(0);
-  }
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id) {
-      this.projectsService
-        .getProjectWithId(this.id)
-        .subscribe(project => (this.project$ = project));
-    }
-
-    this.source = new OlXYZ({
-      url: 'http://tile.osm.org/{z}/{x}/{y}.png',
-    });
-
-    this.layer = new OlTileLayer({
-      source: this.source,
-    });
-
-    this.view = new OlView({
-      center: fromLonLat([6.661594, 50.433237]),
-      zoom: 3,
-    });
-
-    this.map = new OlMap({
-      target: 'map',
-      layers: [this.layer],
-      view: this.view,
-    });
   }
 }

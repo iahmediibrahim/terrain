@@ -3,16 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'projects',
+    path: 'terrains',
     loadChildren: () =>
-      import('./projects/projects.module').then(m => m.ProjectsModule),
+      import('./terrains/terrains.module').then(m => m.TerrainsModule),
   },
   {
     path: ':id',
-    redirectTo: 'projects/:id',
+    redirectTo: 'terrains/:id',
     pathMatch: 'full',
   },
-  { path: '', redirectTo: 'projects', pathMatch: 'full' },
+  { path: '', redirectTo: 'terrains', pathMatch: 'full' },
 ];
 
 @NgModule({

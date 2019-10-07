@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectsService } from '../projects-service/projects.service';
+import { TerrainsService } from '../terrains-service/terrains.service';
 
 @Component({
   selector: 'app-root',
   template: `
     <nav class="secondary-nav">
-      <h5 class="text-muted my-4 pl-3">{{ projectName$ }}</h5>
+      <h5 class="text-muted my-4 pl-3" *ngIf="projectName$">
+        {{ projectName$ }}
+      </h5>
       <ul class="nav">
         <li class="nav-item">
           <a
-            class="nav-link py-3"
+            class="nav-link py-2"
             [routerLink]="['./']"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -20,7 +22,7 @@ import { ProjectsService } from '../projects-service/projects.service';
         </li>
         <li class="nav-item">
           <a
-            class="nav-link py-3"
+            class="nav-link py-2"
             [routerLink]="['./', 'workflows']"
             routerLinkActive="active"
             ><i class="fa fa-crosshairs mr-1" aria-hidden="true"></i>
@@ -29,7 +31,7 @@ import { ProjectsService } from '../projects-service/projects.service';
         </li>
         <li class="nav-item">
           <a
-            class="nav-link py-3"
+            class="nav-link py-2"
             [routerLink]="['./', 'jobs']"
             routerLinkActive="active"
             ><i class="fa fa-files-o mr-1" aria-hidden="true"></i> Jobs</a
@@ -39,21 +41,21 @@ import { ProjectsService } from '../projects-service/projects.service';
     </nav>
     <router-outlet> </router-outlet>
   `,
-  styleUrls: ['./project.component.scss'],
+  styleUrls: ['./terrain.component.scss'],
 })
-export class ProjectComponent implements OnInit {
+export class TerrainComponent implements OnInit {
   id;
-  projectName$;
+  projectName$ = '';
   constructor(
     private route: ActivatedRoute,
-    private projectsService: ProjectsService,
+    private terrainsService: TerrainsService,
   ) {}
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
-      this.projectsService
+      this.terrainsService
         .getProjectWithId(this.id)
-        .subscribe(project => (this.projectName$ = project.name));
+        .subscribe((project: any) => (this.projectName$ = project.name));
     }
   }
 }

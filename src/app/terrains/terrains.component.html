@@ -1,14 +1,15 @@
-<div class="container-fluid my-5">
+<div class="container-fluid my-3">
   <span class="text-muted">Console</span>
-  <h3 class="mt-3 font-weight-bolder">Projects</h3>
-  <button type="button" class="btn btn-outline-secondary mt-4 btn-sm" (click)="open(content)">Start a Project</button>
+  <h3 class="mt-3 font-weight-bolder">terrains</h3>
+  <button type="button" class="btn btn-danger mt-4 btn-sm" (click)="open(content)">Start a Project</button>
   <div class="project row mt-5">
-    <div class="col-md-4 mb-3" *ngFor="let project of projects$ | async">
+    <div class="col-md-3 mb-3" *ngFor="let project of terrains$ | async">
       <article class="card" [routerLink]="['', project.id]">
-        <div class="card-body">
+        <div class="card-body py-2 px-3">
           <h5>{{ project.name }}</h5>
-          <p class="my-3">{{ project.description }}</p>
-          <footer>{{ project.date | date }}</footer>
+          <p class="my-3 text-muted">{{ project.description }}</p>
+          <span class="text-muted"><i class="flaticon-clock-1 pr-1"></i> Last updated
+            {{ project.date | timeAgo }}</span>
         </div>
       </article>
     </div>
@@ -40,8 +41,8 @@
           [(ngModel)]="originalProject.description"></textarea>
       </div>
       <div class="modal-footer px-0">
-        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-        <button type="submit" class="btn btn-info">Save</button>
+        <button type="button" class="btn btn-light" (click)="modal.dismiss('cancel click')">Cancel</button>
+        <button type="submit" class="btn btn-danger">Save</button>
       </div>
     </form>
   </div>

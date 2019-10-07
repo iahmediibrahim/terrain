@@ -1,4 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/fonts/flaticon.css';
+
+
+/* Fonts */
+@font-face {
+  font-family: Roboto-Regular;
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: SourceSansPro-Regular;
+  src: url('./assets/fonts/SourceSansPro-Regular.ttf');
+}
+
+body {
+  font-family: SourceSansPro-Regular,
+    Helvetica,
+    sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 2.2rem;
+}
+
 .form-control.field-error {
   border-color: red;
+}
+
+
+.btn.btn-danger,
+.btn.btn-light {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.125px;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 400;
+  text-align: center;
+  box-sizing: border-box;
+  will-change: background-color,
+    transform;
+  -webkit-tap-highlight-color: transparent;
+  height: 36px;
+  border-radius: 32px;
+  transition: all 0.2s cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
+  text-decoration: none;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  padding: 0px 24px;
+}
+
+.btn.btn-danger {
+  background-color: rgb(255, 51, 102);
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 5px 10px;
+    transform: none;
+    outline: none;
+
+  }
+}
+
+.btn.btn-light {
+  background-color: rgb(204, 204, 204, .8);
+  color: #000;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 5px 10px;
+    transform: none;
+    outline: none;
+
+
+  }
+}
+
+h5 {
+  color: #121315;
+  font-family: Roboto Condensed,
+    sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: none;
 }

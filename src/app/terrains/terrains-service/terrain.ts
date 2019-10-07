@@ -1,4 +1,4 @@
-export interface Project {
+export interface Terrain {
   id: string;
   name: string;
   description: string;

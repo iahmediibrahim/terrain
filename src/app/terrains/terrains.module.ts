@@ -2,20 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { ProjectsComponent } from './projects.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ProjectDetailsComponent } from './project-details/project-details.component';
-import { ProjectComponent } from './project-details/project.component';
-import { WorkflowsComponent } from './project-details/workflows/workflows.component';
-import { JobsComponent } from './project-details/jobs/jobs.component';
+
+import { TimeAgoPipe } from 'time-ago-pipe';
+
+import { WorkflowsComponent } from './terrain/workflows/workflows.component';
+import { JobsComponent } from './terrain/jobs/jobs.component';
+import { TerrainsComponent } from './terrains.component';
+import { TerrainComponent } from './terrain/terrain.component';
+import { TerrainDetailsComponent } from './terrain/details/terrain-details.component';
+
 const routes: Routes = [
-  { path: '', component: ProjectsComponent },
+  { path: '', component: TerrainsComponent },
   {
     path: ':id',
-    component: ProjectComponent,
+    component: TerrainComponent,
     children: [
-      { path: '', component: ProjectDetailsComponent },
+      { path: '', component: TerrainDetailsComponent },
       {
         path: 'workflows',
         component: WorkflowsComponent,
@@ -30,11 +34,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ProjectComponent,
-    ProjectsComponent,
-    ProjectDetailsComponent,
+    TerrainComponent,
+    TerrainsComponent,
+    TerrainDetailsComponent,
     WorkflowsComponent,
     JobsComponent,
+    TimeAgoPipe,
   ],
   imports: [
     CommonModule,
@@ -43,4 +48,4 @@ const routes: Routes = [
     FormsModule,
   ],
 })
-export class ProjectsModule {}
+export class TerrainsModule {}
