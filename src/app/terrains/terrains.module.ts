@@ -12,9 +12,11 @@ import { JobsComponent } from './terrain/jobs/jobs.component';
 import { TerrainsComponent } from './terrains.component';
 import { TerrainComponent } from './terrain/terrain.component';
 import { TerrainDetailsComponent } from './terrain/details/terrain-details.component';
+import { AddComponent } from './add/add.component';
 
 const routes: Routes = [
   { path: '', component: TerrainsComponent },
+  { path: 'add', component: AddComponent },
   {
     path: ':id',
     component: TerrainComponent,
@@ -40,6 +42,7 @@ const routes: Routes = [
     WorkflowsComponent,
     JobsComponent,
     TimeAgoPipe,
+    AddComponent,
   ],
   imports: [
     CommonModule,

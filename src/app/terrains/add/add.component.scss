@@ -1,0 +1,11 @@
+:host {
+  grid-area: main;
+
+  .container {
+    height: 100%;
+
+    .shadow-lg {
+      border-radius: 32px;
+    }
+  }
+}

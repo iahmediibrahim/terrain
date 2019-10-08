@@ -2,7 +2,7 @@
    <div class="row">
 
      <div class="col-md-6" *ngIf="project$">
-       <div class="border rounded p-3 my-3">
+       <div class="border p-3 my-3">
          <form #f='ngForm' (ngSubmit)="onSubmit(f)">
            <div class="form-group">
              <label for="name" class="font-weight-bold">Name:</label>
@@ -35,7 +35,7 @@
          </form>
        </div>
        <input type="file" #file style="display: none" (change)="onFilesAdded()" />
-       <div class="container border rounded p-3">
+       <div class="container border p-3">
          <span class="pr-3 font-weight-bold text-muted">Upload File: </span>
          <button [disabled]="uploading || uploadSuccessful" class="btn btn-light btn-sm" (click)="addFiles()">
            Add Files

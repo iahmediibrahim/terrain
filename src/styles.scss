@@ -26,6 +26,10 @@ body {
   border-color: red;
 }
 
+.border,
+.form-control {
+  border-radius: 32px;
+}
 
 .btn.btn-danger,
 .btn.btn-light {

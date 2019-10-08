@@ -1,7 +1,7 @@
 <div class="container-fluid my-3">
   <span class="text-muted">Console</span>
   <h3 class="mt-3 font-weight-bolder">terrains</h3>
-  <button type="button" class="btn btn-danger mt-4 btn-sm" (click)="open(content)">Start a Project</button>
+  <button routerLink="/add" type="button" class="btn btn-danger mt-4 btn-sm">Start a Project</button>
   <div class="project row mt-5">
     <div class="col-md-3 mb-3" *ngFor="let project of terrains$ | async">
       <article class="card" [routerLink]="['', project.id]">
@@ -15,35 +15,3 @@
     </div>
   </div>
 </div>
-
-
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Start Project</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form #f='ngForm' (ngSubmit)="onSubmit(f)">
-      <div class="form-group">
-        <label for="name" class="font-weight-bold">Name:</label>
-        <input #name="ngModel" required minlength="3" type="text" class="form-control" name="name" id="name"
-          [(ngModel)]="originalProject.name" placeholder="Name" [class.field-error]="f.submitted && name.invalid">
-        <div [hidden]="name.valid || !f.submitted" class="alert alert-danger py-1 mt-2">
-          Name is required!
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="name" class="font-weight-bold">Description: <span
-            class="text-muted font-weight-lighter">(optional)</span></label>
-        <textarea name="description" placeholder="(optional)" class="form-control" id="description"
-          [(ngModel)]="originalProject.description"></textarea>
-      </div>
-      <div class="modal-footer px-0">
-        <button type="button" class="btn btn-light" (click)="modal.dismiss('cancel click')">Cancel</button>
-        <button type="submit" class="btn btn-danger">Save</button>
-      </div>
-    </form>
-  </div>
-</ng-template>
