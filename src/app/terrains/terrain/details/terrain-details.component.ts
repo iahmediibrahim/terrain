@@ -7,22 +7,25 @@ import OlTileLayer from 'ol/layer/Tile';
 import OlView from 'ol/View';
 import { fromLonLat } from 'ol/proj';
 import { TerrainsService } from '../../terrains-service/terrains.service';
+import { NgForm } from '@angular/forms';
+import swal from 'sweetalert2';
+
 @Component({
   selector: 'app-terrain-details',
   templateUrl: './terrain-details.component.html',
   styleUrls: ['./terrain-details.component.scss'],
 })
 export class TerrainDetailsComponent implements OnInit {
-  map: OlMap;
-  source: OlXYZ;
-  layer: OlTileLayer;
-  view: OlView;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private terrainsService: TerrainsService,
   ) {}
-  project$;
+  map: OlMap;
+  source: OlXYZ;
+  layer: OlTileLayer;
+  view: OlView;
+  newProject;
   id;
   progress;
   canBeClosed = true;
@@ -32,14 +35,19 @@ export class TerrainDetailsComponent implements OnInit {
   uploadSuccessful = false;
   @ViewChild('file', { static: false }) file;
   public fileUpload: File;
+  postError = false;
+  postErrorMessage = '';
+  project$ = {};
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
-      this.terrainsService
-        .getProjectWithId(this.id)
-        .subscribe(project => (this.project$ = project));
+      this.terrainsService.getProjectWithId(this.id).subscribe(project => {
+        this.newProject = project;
+        this.project$ = JSON.parse(JSON.stringify(project));
+      });
     }
+    console.log(this.project$);
 
     this.source = new OlXYZ({
       url: 'http://tile.osm.org/{z}/{x}/{y}.png',
@@ -102,5 +110,75 @@ export class TerrainDetailsComponent implements OnInit {
   }
   onFilesAdded() {
     this.fileUpload = this.file.nativeElement.files.item(0);
+  }
+  onSubmit(f: NgForm) {
+    if (f.valid) {
+      this.saveProject(this.newProject);
+    } else {
+      this.postError = true;
+      this.postErrorMessage = 'Please fix the above erros.';
+    }
+  }
+  onCancel() {
+    this.newProject = this.project$;
+  }
+  saveProject(project) {
+    if (!project.id) {
+      this.createProject(project);
+    }
+    this.updateProject(project);
+  }
+  createProject(project) {
+    this.terrainsService.create(project).subscribe(result => {
+      console.log('project Created!');
+    });
+  }
+  updateProject(project) {
+    this.terrainsService.update(project).subscribe(result => {
+      console.log('project Updated!');
+    });
+  }
+  deleteStaff(staffId: number) {
+    swal
+      .fire({
+        type: 'warning',
+        title: 'Are you sure to Delete Staff?',
+        text: 'You will not be able to recover the data of Staff',
+        showCancelButton: true,
+        confirmButtonColor: '#049F0C',
+        cancelButtonColor: '#ff0000',
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it',
+      })
+      .then(
+        () => {
+          this.terrainsService.delete(staffId).subscribe(
+            data => {
+              if (data.hasOwnProperty('error')) {
+                console.log(data);
+              } else if (data) {
+                swal.fire({
+                  type: 'success',
+                  title: 'Deleted!',
+                  text: 'The Staff has been deleted.',
+                });
+              }
+            },
+            error => {
+              console.log(error);
+            },
+          );
+        },
+        dismiss => {
+          // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+          if (dismiss === 'cancel') {
+            swal.fire({
+              type: 'info',
+              title: 'Cancelled',
+              text: 'Your Staff file is safe :)',
+            });
+          }
+        },
+      );
   }
 }
