@@ -4,6 +4,11 @@ import { TerrainsService } from '../terrains-service/terrains.service';
 import { v4 as uuid } from 'uuid';
 import { Terrain } from '../terrains-service/terrain';
 import { NgForm } from '@angular/forms';
+import OlMap from 'ol/Map';
+import OlXYZ from 'ol/source/XYZ';
+import OlTileLayer from 'ol/layer/Tile';
+import OlView from 'ol/View';
+import { fromLonLat } from 'ol/proj';
 
 @Component({
   selector: 'app-add',
@@ -11,6 +16,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add.component.scss'],
 })
 export class AddComponent implements OnInit {
+  map: OlMap;
+  source: OlXYZ;
+  layer: OlTileLayer;
+  view: OlView;
   originalProject: Terrain = {
     name: null,
     description: null,
@@ -47,7 +56,26 @@ export class AddComponent implements OnInit {
       this.postErrorMessage = 'Please fix the above erros.';
     }
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.source = new OlXYZ({
+      url: 'http://tile.osm.org/{z}/{x}/{y}.png',
+    });
+
+    this.layer = new OlTileLayer({
+      source: this.source,
+    });
+
+    this.view = new OlView({
+      center: fromLonLat([6.661594, 50.433237]),
+      zoom: 3,
+    });
+
+    this.map = new OlMap({
+      target: 'map',
+      layers: [this.layer],
+      view: this.view,
+    });
+  }
   createProject(project) {
     this.terrainsService.create(project).subscribe(
       result => {

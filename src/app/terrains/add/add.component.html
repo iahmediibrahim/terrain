@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row justify-content-center align-content-center h-100">
 
-    <div class="col-md-8 shadow-lg px-5 pb-5 ">
+    <div class="col-md-6 px-5 pb-5 ">
       <h2 class="title pt-5 pb-3" id="modal-basic-title">Create New Terrain!</h2>
 
       <form #f='ngForm' (ngSubmit)="onSubmit(f)">
@@ -24,6 +24,9 @@
           <button type="submit" class="btn btn-danger">Save</button>
         </div>
       </form>
+    </div>
+    <div class="col-md-6 vh-100 pr-0">
+      <div id="map" class="h-100"></div>
     </div>
   </div>
 

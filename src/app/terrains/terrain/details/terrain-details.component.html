@@ -1,9 +1,9 @@
  <div class="container-fluid">
    <div class="row">
      <div class="col-md-6" *ngIf="newProject">
-       <h3>{{ newProject.name }}</h3>
+       <h3 class="text-muted my-4 pl-3">{{ newProject.name }}</h3>
 
-       <div class="border p-3 my-3">
+       <div class="p-3 my-3">
          <form #f='ngForm' (ngSubmit)="onSubmit(f)">
            <div class="form-group">
              <label for="name" class="font-weight-bold">Name:</label>
@@ -19,12 +19,14 @@
              <textarea #description="ngModel" name="description" placeholder="(optional)" class="form-control"
                id="description" [(ngModel)]="newProject.description"></textarea>
            </div>
-           <div class="modal-footer px-0">
-             <button type="button" class="btn btn-light" (click)="onCancel()">Cancel</button>
+           <div class="text-right px-0">
+             <button type="button" class="btn btn-light mr-2" (click)="onCancel()">Cancel</button>
              <button type="submit" class="btn btn-danger">Save</button>
            </div>
          </form>
        </div>
+       <hr>
+
        <input type="file" #file style="display: none" (change)="onFilesAdded()" />
        <div class="container border p-3">
          <span class="pr-3 font-weight-bold text-muted">Upload File: </span>

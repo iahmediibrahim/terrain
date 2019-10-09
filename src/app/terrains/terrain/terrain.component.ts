@@ -1,14 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { TerrainsService } from '../terrains-service/terrains.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
     <nav class="secondary-nav">
-      <h5 class="text-muted my-4 pl-3" *ngIf="projectName$">
-        {{ projectName$ }}
-      </h5>
       <ul class="nav">
         <li class="nav-item">
           <a
@@ -43,19 +38,4 @@ import { TerrainsService } from '../terrains-service/terrains.service';
   `,
   styleUrls: ['./terrain.component.scss'],
 })
-export class TerrainComponent implements OnInit {
-  id;
-  projectName$ = '';
-  constructor(
-    private route: ActivatedRoute,
-    private terrainsService: TerrainsService,
-  ) {}
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id) {
-      this.terrainsService
-        .getProjectWithId(this.id)
-        .subscribe((project: any) => (this.projectName$ = project.name));
-    }
-  }
-}
+export class TerrainComponent {}
