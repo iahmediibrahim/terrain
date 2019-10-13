@@ -47,7 +47,6 @@ export class TerrainDetailsComponent implements OnInit {
         this.project$ = JSON.parse(JSON.stringify(project));
       });
     }
-    console.log(this.project$);
 
     this.source = new OlXYZ({
       url: 'http://tile.osm.org/{z}/{x}/{y}.png',
@@ -145,40 +144,28 @@ export class TerrainDetailsComponent implements OnInit {
         title: 'Are you sure to Delete Staff?',
         text: 'You will not be able to recover the data of Staff',
         showCancelButton: true,
-        confirmButtonColor: '#049F0C',
-        cancelButtonColor: '#ff0000',
         confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, keep it',
+        cancelButtonText: 'No, keep it!',
+        confirmButtonColor: 'rgb(255, 51, 102)',
+        cancelButtonColor: 'rgb(204, 204, 204, .8)',
+        customClass: {
+          confirmButton: 'border-32',
+          cancelButton: 'border-32',
+        },
       })
-      .then(
-        () => {
-          this.terrainsService.delete(staffId).subscribe(
-            data => {
-              if (data.hasOwnProperty('error')) {
-                console.log(data);
-              } else if (data) {
-                swal.fire({
-                  type: 'success',
-                  title: 'Deleted!',
-                  text: 'The Staff has been deleted.',
-                });
-              }
-            },
-            error => {
-              console.log(error);
-            },
-          );
-        },
-        dismiss => {
-          // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
-          if (dismiss === 'cancel') {
-            swal.fire({
-              type: 'info',
-              title: 'Cancelled',
-              text: 'Your Staff file is safe :)',
-            });
-          }
-        },
-      );
+      .then(result => {
+        if (result.value) {
+          this.terrainsService.delete(staffId).subscribe(() => {
+            swal
+              .fire('Deleted!', 'Your file has been deleted.', 'success')
+              .then(() => {
+                this.router.navigate(['./']);
+              });
+          });
+        } else if (result.dismiss === swal.DismissReason.cancel) {
+          swal.fire('Cancelled', 'Your file is safe :)', 'error');
+        }
+      });
   }
+  delete(id) {}
 }

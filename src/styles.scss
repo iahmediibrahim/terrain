@@ -26,9 +26,13 @@ body {
   border-color: red;
 }
 
+a {
+  cursor: pointer;
+}
+
 .border,
 .form-control {
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .btn.btn-danger,
@@ -92,4 +96,27 @@ h5 {
   line-height: 24px;
   text-decoration: none;
   text-transform: none;
+}
+
+.swal2-actions .swal2-styled.swal2-confirm {
+  background-color: #1E8FE1;
+}
+
+.swal2-actions .swal2-styled.swal2-confirm,
+.swal2-styled.swal2-confirm.border-32,
+.swal2-styled.swal2-cancel.border-32 {
+  border-radius: 32px;
+}
+
+.swal2-actions .swal2-styled {
+  padding: .25em 2em;
+
+}
+
+#swal2-title.swal2-title {
+  font-size: 1.75em;
+}
+
+#swal2-content {
+  font-size: 1rem;
 }

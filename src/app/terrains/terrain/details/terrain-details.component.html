@@ -1,7 +1,11 @@
  <div class="container-fluid">
    <div class="row">
      <div class="col-md-6" *ngIf="newProject">
-       <h3 class="text-muted my-4 pl-3">{{ newProject.name }}</h3>
+       <div class="d-flex my-4 align-content-center justify-content-between">
+         <h3 class="text-muted mb-0 pl-3">{{ newProject.name }}</h3>
+         <a class="border bg-light" (click)="deleteStaff(newProject.id)">
+           <i class="la la-trash"></i></a>
+       </div>
 
        <div class="p-3 my-3">
          <form #f='ngForm' (ngSubmit)="onSubmit(f)">
@@ -54,10 +58,6 @@
        <div class="done mt-5">
          <textarea name="" class="form-control" id="" rows="2"
            placeholder="data from file should be displayed here!"></textarea>
-
-
-         <button type="button" class="btn btn-light" (click)="deleteStaff(newProject.id)">delete</button>
-
        </div>
      </div>
      <div class="col-md-6 vh-100 pr-0">
