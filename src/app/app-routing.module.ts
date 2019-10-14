@@ -3,6 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'welcome',
+    loadChildren: () =>
+      import('./welcome/welcome.module').then(m => m.WelcomeModule),
+  },
+  {
     path: 'terrains',
     loadChildren: () =>
       import('./terrains/terrains.module').then(m => m.TerrainsModule),
@@ -12,7 +17,7 @@ const routes: Routes = [
     redirectTo: 'terrains/:id',
     pathMatch: 'full',
   },
-  { path: '', redirectTo: 'terrains', pathMatch: 'full' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
 ];
 
 @NgModule({

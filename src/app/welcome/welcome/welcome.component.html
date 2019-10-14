@@ -1,0 +1,63 @@
+<button (click)="open(content)" type="button" class="btn btn-danger mt-3btn-sm">Start a Project</button>
+
+
+
+
+<ng-template #content let-modal>
+  <div class="container text-center">
+    <h1 class="my-5 header">Choose a project type</h1>
+    <button type="button" class="close px-3 py-2" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <i class="la la-close x"></i>
+      <span class="d-block esc">ESC</span>
+    </button>
+    <div class="row pt-5">
+      <div class="col-md-3">
+        <div class=" hover">
+          <img src="../../../assets/images/terrain.png" alt="">
+          <h3 class="mt-2">Terrain</h3>
+          <p class="text-muted">
+            Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit.
+          </p>
+          <button class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class=" hover">
+          <img src="../../../assets/images/weather.png" alt="">
+          <h3 class="mt-2">Weather</h3>
+          <p class="text-muted">
+            Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit.
+          </p>
+          <button class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class=" hover">
+          <img src="../../../assets/images/obstacles.png" alt="">
+          <h3 class="mt-2">Obstacles</h3>
+          <p class="text-muted">
+            Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit.
+          </p>
+          <button class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <div class=" hover">
+          <img src="../../../assets/images/aviation.png" alt="">
+          <h3 class="mt-2">Aviation</h3>
+          <p class="text-muted">
+            Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit.
+          </p>
+          <button class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</ng-template>

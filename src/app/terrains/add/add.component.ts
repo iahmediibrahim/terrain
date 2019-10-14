@@ -41,7 +41,7 @@ export class AddComponent implements OnInit {
       id: uuid(),
       workflows: {},
     };
-    this.router.navigate(['/']);
+    this.router.navigate(['/terrains']);
   }
   onHttpError(errorResponse: any) {
     console.log('Error: ', errorResponse);
