@@ -18,6 +18,11 @@
       font-size: 13px;
       color: #777c85;
 
+      i {
+        font-size: 16px;
+        padding-right: .5rem;
+      }
+
       &:hover,
       &.active {
         background: hsla(0, 0%, 100%, .75);

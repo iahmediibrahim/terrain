@@ -26,7 +26,6 @@ export class TerrainDetailsComponent implements OnInit {
   layer: OlTileLayer;
   view: OlView;
   newProject;
-  id;
   progress;
   canBeClosed = true;
   primaryButtonText = 'Upload';
@@ -38,16 +37,9 @@ export class TerrainDetailsComponent implements OnInit {
   postError = false;
   postErrorMessage = '';
   project$ = {};
-
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id) {
-      this.terrainsService.getProjectWithId(this.id).subscribe(project => {
-        this.newProject = project;
-        this.project$ = JSON.parse(JSON.stringify(project));
-      });
-    }
-
+    const id = this.route.snapshot.paramMap.get('id');
+    this.getProject(id);
     this.source = new OlXYZ({
       url: 'http://tile.osm.org/{z}/{x}/{y}.png',
     });
@@ -110,32 +102,34 @@ export class TerrainDetailsComponent implements OnInit {
   onFilesAdded() {
     this.fileUpload = this.file.nativeElement.files.item(0);
   }
+  getProject(id) {
+    this.terrainsService.getProjectWithId(id).subscribe(project => {
+      this.newProject = project;
+      this.project$ = JSON.parse(JSON.stringify(project));
+    });
+  }
+
   onSubmit(f: NgForm) {
     if (f.valid) {
-      this.saveProject(this.newProject);
+      this.saveProject(this.project$);
     } else {
       this.postError = true;
       this.postErrorMessage = 'Please fix the above erros.';
     }
   }
-  onCancel() {
-    this.newProject = this.project$;
-  }
+
   saveProject(project) {
-    if (!project.id) {
-      this.createProject(project);
-    }
     this.updateProject(project);
-  }
-  createProject(project) {
-    this.terrainsService.create(project).subscribe(result => {
-      console.log('project Created!');
-    });
   }
   updateProject(project) {
     this.terrainsService.update(project).subscribe(result => {
-      console.log('project Updated!');
+      // this.getProject(project.id);
+      //  console.log(result);
+      this.newProject = result;
     });
+  }
+  onCancel() {
+    this.project$ = JSON.parse(JSON.stringify(this.newProject));
   }
   deleteStaff(staffId: number) {
     swal
@@ -156,16 +150,11 @@ export class TerrainDetailsComponent implements OnInit {
       .then(result => {
         if (result.value) {
           this.terrainsService.delete(staffId).subscribe(() => {
-            swal
-              .fire('Deleted!', 'Your file has been deleted.', 'success')
-              .then(() => {
-                this.router.navigate(['./']);
-              });
+            this.router.navigate(['/terrains']);
           });
         } else if (result.dismiss === swal.DismissReason.cancel) {
-          swal.fire('Cancelled', 'Your file is safe :)', 'error');
+          return true;
         }
       });
   }
-  delete(id) {}
 }

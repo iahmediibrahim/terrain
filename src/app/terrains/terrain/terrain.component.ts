@@ -7,29 +7,27 @@ import { Component } from '@angular/core';
       <ul class="nav">
         <li class="nav-item">
           <a
-            class="nav-link py-2"
+            class="nav-link py-2 d-flex align-items-center"
             [routerLink]="['./']"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            ><i class="fa fa-address-card-o mr-1" aria-hidden="true"></i>
-            Dashboard</a
+            ><i class="la la-cog"></i>Dashboard</a
           >
         </li>
         <li class="nav-item">
           <a
-            class="nav-link py-2"
+            class="nav-link py-2 d-flex align-items-center"
             [routerLink]="['./', 'workflows']"
             routerLinkActive="active"
-            ><i class="fa fa-crosshairs mr-1" aria-hidden="true"></i>
-            Workflows</a
+            ><i class="la la-object-ungroup"></i>Workflows</a
           >
         </li>
         <li class="nav-item">
           <a
-            class="nav-link py-2"
+            class="nav-link py-2 d-flex align-items-center"
             [routerLink]="['./', 'jobs']"
             routerLinkActive="active"
-            ><i class="fa fa-files-o mr-1" aria-hidden="true"></i> Jobs</a
+            ><i class="la la-files-o"></i>Jobs</a
           >
         </li>
       </ul>

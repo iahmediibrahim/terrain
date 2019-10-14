@@ -1,4 +1,9 @@
-<button (click)="open(content)" type="button" class="btn btn-danger mt-3btn-sm">Start a Project</button>
+<div class="container-fluid mt-3">
+
+  <span class="text-muted">Console</span>
+  <h3 class="mt-3 font-weight-bolder">Start creating a new project!</h3>
+  <button (click)="open(content)" type="button" class="btn btn-danger mt-3btn-sm">Start a Project</button>
+</div>
 
 
 
@@ -11,47 +16,47 @@
       <span class="d-block esc">ESC</span>
     </button>
     <div class="row pt-5">
-      <div class="col-md-3">
-        <div class=" hover">
+      <div class="col-md-3 col-sm-6">
+        <div class="hover">
           <img src="../../../assets/images/terrain.png" alt="">
-          <h3 class="mt-2">Terrain</h3>
+          <h3 class="my-3">Terrain</h3>
           <p class="text-muted">
-            Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, delectus.
           </p>
-          <button class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
+          <button routerLink="/terrains/add" (click)="modal.dismiss('Close click')"
+            class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class=" hover">
+      <div class="col-md-3 col-sm-6">
+        <div class="hover">
           <img src="../../../assets/images/weather.png" alt="">
-          <h3 class="mt-2">Weather</h3>
+          <h3 class="my-3">Weather</h3>
           <p class="text-muted">
-            Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, delectus.
+
           </p>
           <button class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class=" hover">
+      <div class="col-md-3 col-sm-6">
+        <div class="hover">
           <img src="../../../assets/images/obstacles.png" alt="">
-          <h3 class="mt-2">Obstacles</h3>
+          <h3 class="my-3">Obstacles</h3>
           <p class="text-muted">
-            Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, delectus.
+
           </p>
           <button class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
         </div>
 
       </div>
-      <div class="col-md-3">
-        <div class=" hover">
+      <div class="col-md-3 col-sm-6">
+        <div class="hover">
           <img src="../../../assets/images/aviation.png" alt="">
-          <h3 class="mt-2">Aviation</h3>
+          <h3 class="my-3">Aviation</h3>
           <p class="text-muted">
-            Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, delectus.
+
           </p>
           <button class="btn btn-light text-uppercase mb-5">Create new Terrain</button>
         </div>

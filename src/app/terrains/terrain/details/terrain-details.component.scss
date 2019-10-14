@@ -4,8 +4,12 @@
 
   .la-trash {
     font-size: 24px;
-    color: red;
+    color: rgb(192, 192, 192);
     vertical-align: middle;
+
+    &:hover {
+      color: red;
+    }
   }
 
   .swal2-styled.swal2-confirm {

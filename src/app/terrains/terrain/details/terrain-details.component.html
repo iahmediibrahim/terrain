@@ -2,8 +2,8 @@
    <div class="row">
      <div class="col-md-6" *ngIf="newProject">
        <div class="d-flex my-4 align-content-center justify-content-between">
-         <h3 class="text-muted mb-0 pl-3">{{ newProject.name }}</h3>
-         <a class="border bg-light" (click)="deleteStaff(newProject.id)">
+         <h1 class="mb-0 pl-3">{{ newProject.name }}</h1>
+         <a (click)="deleteStaff(newProject.id)">
            <i class="la la-trash"></i></a>
        </div>
 
@@ -12,7 +12,7 @@
            <div class="form-group">
              <label for="name" class="font-weight-bold">Name:</label>
              <input #name="ngModel" required minlength="3" type="text" class="form-control" name="name" id="name"
-               [(ngModel)]="newProject.name" placeholder="Name" [class.field-error]="f.submitted && name.invalid">
+               [(ngModel)]="project$.name" placeholder="Name" [class.field-error]="f.submitted && name.invalid">
              <div [hidden]="name.valid || !f.submitted" class="alert alert-danger py-1 mt-2">
                Name is required!
              </div>
@@ -21,7 +21,7 @@
              <label for="name" class="font-weight-bold">Description: <span
                  class="text-muted font-weight-lighter">(optional)</span></label>
              <textarea #description="ngModel" name="description" placeholder="(optional)" class="form-control"
-               id="description" [(ngModel)]="newProject.description"></textarea>
+               id="description" [(ngModel)]="project$.description"></textarea>
            </div>
            <div class="text-right px-0">
              <button type="button" class="btn btn-light mr-2" (click)="onCancel()">Cancel</button>

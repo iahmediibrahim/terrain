@@ -1,24 +1,10 @@
 {
   "projects": [
     {
-      "name": "project test asd das das d asd asd",
-      "description": null,
-      "date": "2019-10-13T13:13:28.036Z",
-      "id": "1f37c3e7-3b04-4903-a060-d948110468aa",
-      "workflows": {}
-    },
-    {
-      "name": "project test asd das das d asd asd",
-      "description": null,
-      "date": "2019-10-14T08:43:30.121Z",
-      "id": "9470d694-fe3b-4301-9c77-904b7fd4feb2",
-      "workflows": {}
-    },
-    {
-      "name": "project test asd das das d asd asd",
-      "description": null,
-      "date": "2019-10-14T08:45:09.902Z",
-      "id": "109754ff-e22e-45eb-ac6d-7db07932efcd",
+      "name": "Hello World",
+      "description": " Hello World",
+      "date": "2019-10-14T12:43:57.029Z",
+      "id": "1509fafa-f3b4-42bb-98ee-3e90baa2fbc5",
       "workflows": {}
     }
   ]
