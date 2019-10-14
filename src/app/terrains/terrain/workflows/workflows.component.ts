@@ -15,6 +15,9 @@ export class WorkflowsComponent implements OnInit {
   };
   ngOnInit() {}
   open(content) {
-    this.modalService.open(content, { centered: true, size: 'xl' });
+    this.modalService.open(content, {
+      windowClass: 'modal-holder',
+      centered: true,
+    });
   }
 }

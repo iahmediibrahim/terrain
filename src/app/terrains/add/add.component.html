@@ -6,10 +6,10 @@
 
       <form #f='ngForm' (ngSubmit)="onSubmit(f)">
         <div class="form-group">
-          <label for="name" class="font-weight-bold">Name:</label>
+          <label for="name" class="font-weight-bold"><i class="la la-asterisk customAlert"></i> Name:</label>
           <input #name="ngModel" required minlength="3" type="text" class="form-control" name="name" id="name"
             [(ngModel)]="originalProject.name" placeholder="Name" [class.field-error]="f.submitted && name.invalid">
-          <div [hidden]="name.valid || !f.submitted" class="alert alert-danger py-1 mt-2">
+          <div [hidden]="name.valid || !f.submitted" class="customAlert py-1">
             Name is required!
           </div>
         </div>

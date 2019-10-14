@@ -13,9 +13,9 @@ const routes: Routes = [
       import('./terrains/terrains.module').then(m => m.TerrainsModule),
   },
   {
-    path: ':id',
-    redirectTo: 'terrains/:id',
-    pathMatch: 'full',
+    path: 'datatypes',
+    loadChildren: () =>
+      import('./datatypes/datatypes.module').then(m => m.DatatypesModule),
   },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
 ];

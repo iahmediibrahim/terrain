@@ -126,6 +126,10 @@ h5 {
   text-transform: none;
 }
 
+.customAlert {
+  color: red;
+}
+
 .swal2-actions .swal2-styled.swal2-confirm {
   background-color: #1E8FE1;
 }
@@ -265,4 +269,51 @@ h5 {
   &:focus {
     outline: 0;
   }
+}
+
+// ol-zoom
+.ol-zoom {
+  display: flex;
+  flex-direction: column;
+  width: 34px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+}
+
+.ol-zoom button,
+.ol-zoom button:active,
+.ol-zoom button:focus {
+  border-bottom: 1px solid hsla(0, 0%, 100%, .2);
+  background-color: #fff;
+  color: rgba(173, 173, 173, 0.7);
+  font-size: 24px;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  border-color: hsla(0, 0%, 100%, .3);
+}
+
+.ol-zoom button:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.ol-zoom .ol-zoom-in {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border: 0;
+}
+
+.ol-zoom .ol-zoom-out {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: 0;
+}
+
+
+.ol-rotate {
+  display: none;
 }
