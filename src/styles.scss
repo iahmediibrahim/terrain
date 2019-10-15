@@ -58,7 +58,7 @@ label {
   border-radius: 5px;
 }
 
-.btn.btn-danger,
+.btn.btn-outline-info,
 .btn.btn-light {
   font-size: 14px;
   line-height: 20px;
@@ -82,8 +82,9 @@ label {
   padding: 0px 24px;
 }
 
-.btn.btn-danger {
-  background-color: rgb(255, 51, 102);
+.btn.btn-outline-info {
+  background-color: #20b0c7;
+  color: #fff;
 
   &:hover,
   &:focus,
@@ -91,7 +92,6 @@ label {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 5px 10px;
     transform: none;
     outline: none;
-
   }
 }
 

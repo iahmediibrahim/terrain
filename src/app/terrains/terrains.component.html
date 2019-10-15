@@ -1,7 +1,7 @@
 <div class="container-fluid my-3">
   <span class="text-muted">Console</span>
   <h3 class="mt-3 font-weight-bolder">terrains</h3>
-  <button routerLink="./add" type="button" class="btn btn-danger mt-4 btn-sm">Start a Project</button>
+  <button routerLink="./add" type="button" class="btn btn-outline-info mt-4 btn-sm">Start a Project</button>
   <div class="project row mt-5">
     <div class="col-md-3 mb-3" *ngFor="let project of terrains$ | async">
       <article class="card" [routerLink]="['./', project.id]">
