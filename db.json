@@ -14,5 +14,31 @@
       "id": "e7009e7c-afcc-4ad6-815a-81d42ebaa3f6",
       "workflows": {}
     }
+  ],
+  "datatypes": [
+    {
+      "name": "dataType",
+      "id": "dataType"
+    },
+    {
+      "name": "dataType",
+      "id": "dataType"
+    },
+    {
+      "name": "dataType",
+      "id": "dataType"
+    },
+    {
+      "name": "dataType",
+      "id": "dataType"
+    },
+    {
+      "name": "dataType",
+      "id": "dataType"
+    },
+    {
+      "name": "dataType",
+      "id": "dataType"
+    }
   ]
 }

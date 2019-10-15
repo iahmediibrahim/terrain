@@ -126,6 +126,25 @@ h5 {
   text-transform: none;
 }
 
+.card {
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(18, 19, 21, .16);
+  border-radius: 6px;
+
+  &:focus,
+  &:active {
+    outline: none;
+
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #20b0c7;
+  }
+
+}
+
 .customAlert {
   color: red;
 }
