@@ -1,1 +1,27 @@
-<p>datatype works!</p>
+<div class="container-fluid my-3" *ngIf="datatype">
+  <span class="text-muted">Data Type</span>
+  <h3 class="mt-3 font-weight-bolder">{{ datatype.name }}</h3>
+  <div class="row mt-5">
+    <div class="col-md-12 mb-3">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dataType of datatype.datatype; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ dataType.name }}
+            </td>
+            <td>{{ dataType.definition }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
