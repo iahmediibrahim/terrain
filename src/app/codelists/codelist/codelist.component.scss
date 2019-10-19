@@ -1,0 +1,14 @@
+:host {
+  grid-area: main;
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  i {
+    font-weight: 600;
+    font-size: 20px;
+    color: #555;
+
+  }
+}

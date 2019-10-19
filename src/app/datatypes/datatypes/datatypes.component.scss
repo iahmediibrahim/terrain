@@ -1,13 +1,9 @@
 :host {
   grid-area: main;
 
-  .la-long-arrow-right {
-    color: #fff;
-    background-color: #20b0c7;
-    font-size: 24px;
-    border-radius: 6px;
-    padding: 2px;
-    box-shadow: 0 2px 6px rgba(18, 19, 21, .16);
-
+  .card {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./terrains/terrains.module').then(m => m.TerrainsModule),
   },
   {
+    path: 'codelists',
+    loadChildren: () =>
+      import('./codelists/codelists.module').then(m => m.CodelistsModule),
+  },
+  {
     path: 'datatypes',
     loadChildren: () =>
       import('./datatypes/datatypes.module').then(m => m.DatatypesModule),

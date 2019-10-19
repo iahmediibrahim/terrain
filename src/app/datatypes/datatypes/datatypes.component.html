@@ -4,10 +4,12 @@
   <div class="row mt-5">
     <div class="col-md-3 mb-3" *ngFor="let dataType of datatypes">
       <div class="card" [routerLink]="['./', dataType.id]">
-        <h5 class="my-2 pl-2 d-flex justify-content-between align-items-center">
-          <span>{{ dataType.name }}</span>
-          <i class="la la-long-arrow-right mr-2"></i>
-        </h5>
+        <div class="card-body">
+          <h5 class="my-2">
+            {{ dataType.name }}
+          </h5>
+          <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
       </div>
     </div>
   </div>

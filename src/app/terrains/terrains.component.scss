@@ -1,3 +1,9 @@
 :host {
   grid-area: main;
+
+  .card {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

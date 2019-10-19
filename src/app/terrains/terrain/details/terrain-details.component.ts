@@ -135,8 +135,8 @@ export class TerrainDetailsComponent implements OnInit {
     swal
       .fire({
         type: 'warning',
-        title: 'Are you sure to Delete Staff?',
-        text: 'You will not be able to recover the data of Staff',
+        title: 'Are you sure to Delete Record?',
+        text: 'You will not be able to recover the data!',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
         cancelButtonText: 'No, keep it!',

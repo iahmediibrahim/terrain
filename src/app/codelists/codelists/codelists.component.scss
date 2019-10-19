@@ -1,0 +1,44 @@
+:host {
+  grid-area: main;
+
+
+
+  .search {
+    position: relative;
+    background: #fff;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    height: 45px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    .query {
+      position: relative;
+      font-weight: 400;
+      font-size: 18px;
+      color: #000;
+      box-sizing: border-box;
+      padding: 0 70px 0 30px;
+      border: none;
+      background: none;
+      width: 100%;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      pointer-events: none;
+      transform: translateY(-50%) scaleX(-1);
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 24px;
+    }
+  }
+}
