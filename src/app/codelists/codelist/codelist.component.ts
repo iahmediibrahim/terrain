@@ -1,10 +1,10 @@
+import { EditModalComponent } from './editModal/editModal.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CodelistsService } from '../codelists-service/codelists.service';
 import swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddModalComponent } from './addModal/addModal.component';
-
 @Component({
   selector: 'app-datatype',
   templateUrl: './codelist.component.html',
@@ -17,14 +17,16 @@ export class CodelistComponent implements OnInit {
     private codelistsService: CodelistsService,
     private modalService: NgbModal,
   ) {}
-
+  add = AddModalComponent;
+  edit = EditModalComponent;
   datatype;
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.getProject(id);
   }
-  open() {
-    const modalRef = this.modalService.open(AddModalComponent, {
+  open(e) {
+    console.log(e);
+    const modalRef = this.modalService.open(e, {
       centered: true,
       windowClass: 'openModal',
     });

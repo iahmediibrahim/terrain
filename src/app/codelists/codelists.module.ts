@@ -1,3 +1,4 @@
+import { EditModalComponent } from './codelist/editModal/editModal.component';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,13 +17,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CodelistsComponent, CodelistComponent, AddModalComponent],
+  declarations: [
+    CodelistsComponent,
+    CodelistComponent,
+    AddModalComponent,
+    EditModalComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     NgbModule,
   ],
-  entryComponents: [AddModalComponent],
+  entryComponents: [AddModalComponent, EditModalComponent],
 })
 export class CodelistsModule {}
